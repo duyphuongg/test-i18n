@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="home flex items-center p-5 justify-center">
+    {{ $t("app.name") }}
+    <p>{{ $t("design_system.title") }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { defineComponent, ref, reactive, h } from "vue";
 
 export default defineComponent({
   name: "Home",
-  components: {
-    HelloWorld,
+  components: {},
+  setup() {
+    const count = ref(0);
+    const obj = reactive({ foo: "test" });
+    count.value++;
+    obj.foo = "new";
+    return {
+      count,
+      obj,
+    };
   },
 });
 </script>
